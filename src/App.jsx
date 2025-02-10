@@ -14,9 +14,8 @@ const App = () => {
   const [dataWeather, setDataWeather] = useState();
 
   useEffect(() => {
-    fetch(
-      `http://api.airvisual.com/v2/nearest_city?key=1b207dba-b246-40a5-9be4-c2c4abd3138d`,
-    )
+    const apiKey = import.meta.env.VITE_API_KEY;
+    fetch(`http://api.airvisual.com/v2/nearest_city?key=${apiKey}`)
       .then((res) => res.json())
       .then((weatherData) => setDataWeather(weatherData.data));
   }, []);
